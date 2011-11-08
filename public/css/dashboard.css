@@ -1,5 +1,6 @@
-.item {
-
+.item:hover {
+  background: #EEE;
+  cursor: pointer;
 }
 
 .item > .media {
