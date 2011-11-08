@@ -1,8 +1,12 @@
-.img {
+.item {
+
+}
+
+.item > .media {
   display: inline-block;
   padding: 0 6px;
 }
 
-.item {
+.item > .data {
   display: inline-block;
 }

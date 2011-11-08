@@ -1,3 +1,9 @@
+.thumb_small {
+  background: transparent no-repeat scroll 0 0;
+  width: 32px;
+  height: 32px;
+}
+
 .sprite_32x32 {
   background: transparent url(/img/box/32x32.png) no-repeat scroll 0 0;
   width: 32px;

@@ -2,13 +2,18 @@
   Hello <%= @account.login %>
 </header>
 <nav>
-<% (@root.files + @root.folders).each do |item| %>
-  <div>
-    <div class="img">
-      <% icon_class = (item.type == 'folder' ? "sprite_32x32_folder" : "") %>
-      <div class="thumbnail sprite_32x32 <%= icon_class %>"></div>
+<% (@root.folders + @root.files).each do |item| %>
+  <div class="item" data-id="<%= item.id %>" data-type="<%= item.type %>">
+    <div class="media">
+      <% if item.type == 'file' %>
+        <% icon_url = item.thumbnail %>
+        <div class="thumb_small" style="background-image: url(<%= icon_url %>)"></div>
+      <% else %>
+        <% icon_class = "sprite_32x32_folder" %>
+        <div class="thumb_small sprite_32x32 <%= icon_class %>"></div>
+      <% end %>
     </div>
-    <div class="item">
+    <div class="data" data->
       <%= item.name %>
     </div>
   </div>
