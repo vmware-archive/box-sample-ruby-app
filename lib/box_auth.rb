@@ -3,9 +3,6 @@ require 'box-api'
 module Box
   module SimpleAuth
     def box_login
-      # we have the account cached already
-      return session[:box_account] if session[:box_account]
-
       # make a new Account object using the API key
       account = Box::Account.new(settings.box_api_key)
 
@@ -29,10 +26,11 @@ module Box
       end
 
       if authed
-        # authentication was successful, save the details for later
+        # authentication was successful, save the token for later
         session[:box_token] = account.auth_token
-        session[:box_account] = account
       end
+
+      account
     end
 
     def require_box_login
@@ -43,13 +41,8 @@ module Box
     end
 
     def box_logout
-      if session[:account]
-        session[:account].logout
-
-        session.delete(:account)
-        session.delete(:box_token)
-        session.delete(:box_ticket)
-      end
+      session.delete(:box_token)
+      session.delete(:box_ticket)
     end
   end
 end
