@@ -1,4 +1,2 @@
-require 'sinatra'
-
-require './app/main'
-run Sinatra::Application
+require './dashboard'
+run BoxDashboard
