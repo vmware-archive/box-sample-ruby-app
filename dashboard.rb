@@ -9,6 +9,7 @@ class BoxDashboard < Sinatra::Base
 
   get "/" do
     @account = require_box_login
+    @root = @account.root
 
     erb :dashboard
   end

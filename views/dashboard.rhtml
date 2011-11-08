@@ -1,1 +1,16 @@
-Hello <%= @account.login %>.
+<header>
+  Hello <%= @account.login %>
+</header>
+<nav>
+<% (@root.files + @root.folders).each do |item| %>
+  <div>
+    <div class="img">
+      <% icon_class = (item.type == 'folder' ? "sprite_32x32_folder" : "") %>
+      <div class="thumbnail sprite_32x32 <%= icon_class %>"></div>
+    </div>
+    <div class="item">
+      <%= item.name %>
+    </div>
+  </div>
+<% end %>
+</nav>
