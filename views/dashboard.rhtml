@@ -1,5 +1,15 @@
-<header>
-  Hello <%= @account.login %>
+<header class="box_blue_background">
+  <h2 class="inline-block">
+    <%= @account.login %>
+  </h2>
+
+  <h5 class="inline-block">
+    Space avaliable: <span class="light_grey"><%= @account.space_amount.to_i / 1048576 %> MB</span>
+  </h5>
+
+  <h5 class="inline-block">
+    Space used: <span class="light_grey"><%= @account.space_used.to_i / 104857 %> MB</span>
+  </h5>
 </header>
 <table class="item_table">
   <tr>

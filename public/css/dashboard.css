@@ -1,6 +1,17 @@
 #container {
-  margin: 0 auto;
-  width: 860px;
+}
+
+header {
+  color: #FFF;
+  padding: 6px 12px;
+}
+
+header h1, header h2, header h3 {
+  padding: 0 12px;
+}
+
+header h4, header h5, header h6 {
+  padding: 0 4px;
 }
 
 .item_column {
@@ -9,7 +20,7 @@
 
 .item {
   padding: 2px 6px;
-  min-width: 200px;
+  width: 200px;
 }
 
 .item:hover {
@@ -23,11 +34,30 @@
 }
 
 .item .data {
-  display: inline-block;
+  display: inline;
 }
 
 .spinny {
   background: transparent url(/img/ajax-loader.gif) no-repeat scroll 0 0;
   width: 32px;
   height: 32px;
+}
+
+/* General Styles */
+
+h1, h2, h3, h4, h5, h6 { margin: 0; }
+
+.inline-block {
+  display: inline-block;
+}
+
+.box_blue_background {
+  background-color: #267BB6;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.15, #267BB6), color-stop(1, #338FCE));
+  background-image: -moz-linear-gradient(center bottom, #267BB6 15%, #338FCE 100%);
+  border-color: #0D5E94;
+}
+
+.light_grey {
+  color: #DDD;
 }
