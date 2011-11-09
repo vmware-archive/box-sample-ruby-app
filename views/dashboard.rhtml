@@ -1,21 +1,9 @@
 <header>
   Hello <%= @account.login %>
 </header>
-<nav>
-<% (@root.folders + @root.files).each do |item| %>
-  <div class="item" data-id="<%= item.id %>" data-type="<%= item.type %>">
-    <div class="media">
-      <% if item.type == 'file' %>
-        <% icon_url = item.thumbnail %>
-        <div class="thumb_small" style="background-image: url(<%= icon_url %>)"></div>
-      <% else %>
-        <% icon_class = "sprite_32x32_folder" %>
-        <div class="thumb_small sprite_32x32 <%= icon_class %>"></div>
-      <% end %>
-    </div>
-    <div class="data" data->
-      <%= item.name %>
-    </div>
-  </div>
-<% end %>
-</nav>
+<table class="item_table">
+  <tr>
+    <%= partial :item_column, :root => @root %>
+  </tr>
+</table>
+</div>

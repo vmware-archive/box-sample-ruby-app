@@ -1,0 +1,5 @@
+<td class="item_column" id="column-<%= root.id %>">
+<% (root.folders + root.files).each do |item| %>
+  <%= partial :item, :item => item  %>
+<% end %>
+</td>

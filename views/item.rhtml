@@ -1,0 +1,14 @@
+<div class="item" data-id="<%= item.id %>" data-type="<%= item.type %>">
+  <div class="media">
+    <% if item.type == 'file' %>
+      <% icon_url = item.thumbnail %>
+      <div class="thumb_small" style="background-image: url(<%= icon_url %>)"></div>
+    <% else %>
+      <% icon_class = "sprite_32x32_folder" %>
+      <div class="thumb_small sprite_32x32 <%= icon_class %>"></div>
+    <% end %>
+  </div>
+  <div class="data">
+    <%= item.name %>
+  </div>
+</div>
