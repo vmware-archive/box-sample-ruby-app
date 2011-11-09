@@ -12,6 +12,7 @@
 
   <link rel="stylesheet" href="css/boilerplate.css">
   <link rel="stylesheet" href="css/box.css">
+  <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
@@ -29,6 +30,10 @@
     <h5>
       Space used: <span class="lgrey"><%= @account.space_used.to_i / 104857 %> MB</span>
     </h5>
+
+    <h3 id="logout">
+      <a href="/logout">Logout</a>
+    </h3>
   </header>
 
   <div id="content">
