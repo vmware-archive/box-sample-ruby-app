@@ -17,7 +17,27 @@
 <body>
 
 <div id="container">
-  <%= yield %>
+  <header class="box_blue_bg">
+    <h2>
+      <%= @account.login %>
+    </h2>
+
+    <h5>
+      Space avaliable: <span class="lgrey"><%= @account.space_amount.to_i / 1048576 %> MB</span>
+    </h5>
+
+    <h5>
+      Space used: <span class="lgrey"><%= @account.space_used.to_i / 104857 %> MB</span>
+    </h5>
+  </header>
+
+  <div id="content">
+    <%= yield %>
+  </div>
+
+  <footer>
+    <h5>Built with the <a href="https://www.box.com/developers/api">Box Platform API</a></h5>
+  </footer>
 </div> <!--! end of #container -->
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>

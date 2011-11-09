@@ -6,6 +6,15 @@ header {
   padding: 6px 12px;
 }
 
+footer {
+  background-color: #F2EFEF;
+  border-top: 1px solid #DDD;
+  bottom: 0;
+  padding: 6px 12px;
+  position: absolute;
+  width: 100%;
+}
+
 header h1, header h2, header h3 {
   padding: 0 12px;
 }
@@ -45,19 +54,18 @@ header h4, header h5, header h6 {
 
 /* General Styles */
 
-h1, h2, h3, h4, h5, h6 { margin: 0; }
-
-.inline-block {
+h1, h2, h3, h4, h5, h6 {
   display: inline-block;
+  margin: 0;
 }
 
-.box_blue_background {
+.box_blue_bg {
   background-color: #267BB6;
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.15, #267BB6), color-stop(1, #338FCE));
   background-image: -moz-linear-gradient(center bottom, #267BB6 15%, #338FCE 100%);
   border-color: #0D5E94;
 }
 
-.light_grey {
+.lgrey {
   color: #DDD;
 }
