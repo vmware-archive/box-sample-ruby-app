@@ -34,4 +34,11 @@ class BoxDashboard < Sinatra::Base
 
     partial :item_column, :root => folder
   end
+
+  get "/preview/:id" do |file_id|
+    @account = require_box_login
+    file = @account.file(file_id)
+
+    "<td class=\"item_column\">#{ file.embed_code }</td>"
+  end
 end
