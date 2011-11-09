@@ -39,6 +39,6 @@ class BoxDashboard < Sinatra::Base
     @account = require_box_login
     file = @account.file(file_id)
 
-    "<td class=\"item_column\">#{ file.embed_code }</td>"
+    file.embed_code
   end
 end
