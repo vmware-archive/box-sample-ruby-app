@@ -30,8 +30,8 @@ class BoxDashboard < Sinatra::Base
 
   get "/navigate/:id" do |folder_id|
     @account = require_box_login
+    folder = @account.folder(folder_id)
 
-    folder = @account.root.find(:id => folder_id).first
     partial :item_column, :root => folder
   end
 end
