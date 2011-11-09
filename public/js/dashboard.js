@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('.item').click(function() {
+  $('.item').live('click', function() {
     var id = $(this).data('id');
     var type = $(this).data('type');
     var column = $(this).parents('.item_column')
