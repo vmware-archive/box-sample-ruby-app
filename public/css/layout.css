@@ -8,7 +8,7 @@ header {
 }
 
 header h1, header h2, header h3 {
-  padding: 0 12px;
+  padding: 0 18px;
 }
 
 header h4, header h5, header h6 {
@@ -22,10 +22,6 @@ footer {
   padding: 6px 12px;
   position: fixed;
   width: 100%;
-}
-
-#logout {
-  float: right;
 }
 
 #logout a {

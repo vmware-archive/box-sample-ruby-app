@@ -61,7 +61,19 @@ li.item:hover {
   right: 4px;
 }
 
+.selected {
+  background: transparent url(/img/arrow.png) no-repeat scroll 100% 50%;
+}
+
+.folder_icon {
+  background: transparent url(/img/folder.png);
+  height: 32px;
+  width: 32px;
+}
+
+
 .file {
+
 }
 
 .spinny {
