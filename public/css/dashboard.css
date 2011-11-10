@@ -1,19 +1,31 @@
-table.pane {
-  margin: 0 12px;
+.pane-group {
+  margin: 6px 12px;
 }
 
-td.pane {
+.pane {
+  padding: 12px;
   vertical-align: top;
 }
 
-ul.item {
-  list-style: none;
-  padding: 0 12px;
+.item-box {
+  background: #FFF;
+  border-radius: 8px;
+  margin: 0;
+  padding: 12px;
+
+  box-shadow: 0px 0px 5px #AAA;
+  -moz-box-shadow: 0px 0px 5px #AAA;
+  -webkit-box-shadow: 0px 0px 5px #AAA;
+}
+
+ul.item-box {
 }
 
 li.item {
-  border-bottom: 1px solid #EEE;
-  padding: 4px 6px;
+  border-bottom: 1px solid #E8E8E8;
+  list-style: none;
+  margin: 0;
+  padding: 6px;
   width: 200px;
 }
 
@@ -26,7 +38,7 @@ li.item:hover {
   cursor: pointer;
 }
 
-li.item .media {
+.item .media {
   padding: 0 6px 0 0;
 }
 
@@ -36,6 +48,9 @@ li.item .media {
 
 .pair td {
   padding: 0 6px;
+}
+
+.file {
 }
 
 .spinny {

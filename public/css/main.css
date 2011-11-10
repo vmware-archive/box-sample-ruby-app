@@ -1,6 +1,18 @@
+body {
+  background: #EFF5F9;
+}
+
 header {
   color: #FFF;
   padding: 6px 12px;
+}
+
+header h1, header h2, header h3 {
+  padding: 0 12px;
+}
+
+header h4, header h5, header h6 {
+  padding: 0 4px;
 }
 
 footer {
@@ -28,17 +40,11 @@ footer {
 
 /* General Styles */
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6 { margin: 0 }
+
+.inline {
   display: inline-block;
   margin: 0;
-}
-
-h1, h2, h3 {
-  padding: 0 12px;
-}
-
-h4, h5, h6 {
-  padding: 0 4px;
 }
 
 .box_blue_bg {

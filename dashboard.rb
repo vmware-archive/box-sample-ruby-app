@@ -39,6 +39,6 @@ class BoxDashboard < Sinatra::Base
     @account = require_box_login
     file = @account.file(file_id)
 
-    file.embed_code
+    partial :preview, :file => file
   end
 end
