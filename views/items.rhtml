@@ -9,7 +9,9 @@
               <div class="thumb_small" style="background-image: url(<%= icon_url %>)"></div>
             <% else %>
               <% icon_class = "sprite_32x32_folder" %>
-              <div class="thumb_small sprite_32x32 <%= icon_class %>"></div>
+              <div class="thumb_small sprite_32x32 <%= icon_class %> overlay">
+                <span class="overlay_content"><%= item.file_count %></span>
+              </div>
             <% end %>
           </td>
           <td class="data">
