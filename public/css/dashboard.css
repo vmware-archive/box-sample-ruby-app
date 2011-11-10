@@ -99,3 +99,9 @@
   width: 32px;
   height: 32px;
 }
+
+.thumb_small {
+  background: transparent no-repeat scroll 50% 50%;
+  width: 32px;
+  height: 32px;
+}
