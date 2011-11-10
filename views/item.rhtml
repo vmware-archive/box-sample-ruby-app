@@ -1,0 +1,17 @@
+<table class="group">
+  <tr>
+    <td class="media">
+      <% if item.type == 'file' %>
+        <% icon_url = item.thumbnail %>
+        <div class="thumb_small" style="background-image: url(<%= icon_url %>)"></div>
+      <% else %>
+        <div class="folder_icon overlay">
+          <span class="overlay_content"><%= item.file_count %></span>
+        </div>
+      <% end %>
+    </td>
+    <td class="data">
+      <%= item.name %>
+    </td>
+  </tr>
+</table>

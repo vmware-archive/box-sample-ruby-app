@@ -15,6 +15,13 @@ header h4, header h5, header h6 {
   padding: 0 4px;
 }
 
+#logout a {
+  color: #FFF;
+  text-decoration: none;
+}
+
+#logout { float: right; }
+
 footer {
   background-color: #F2EFEF;
   border-top: 1px solid #DDD;
@@ -22,11 +29,6 @@ footer {
   padding: 6px 12px;
   position: fixed;
   width: 100%;
-}
-
-#logout a {
-  color: #FFF;
-  text-decoration: none;
 }
 
 #fakefooter {

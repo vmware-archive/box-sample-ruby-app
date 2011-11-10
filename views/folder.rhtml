@@ -1,0 +1,13 @@
+<ul class="item-box" data-id="<%= folder.id %>">
+  <li>
+    <div class="add_folder button">Add Folder</div>
+  </li>
+  <li>
+    <div class="add_file button">Add File</div>
+  </li>
+  <% (folder.folders + folder.files).each do |item| %>
+  <li class="item" data-id="<%= item.id %>" data-type="<%= item.type %>">
+    <%= partial(:item, :item => item) %>
+  </li>
+  <% end %>
+</ul>

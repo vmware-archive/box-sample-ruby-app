@@ -1,2 +1,2 @@
 require './dashboard'
-run BoxDashboard
+run Sinatra::Application

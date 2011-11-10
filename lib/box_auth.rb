@@ -2,7 +2,7 @@ require 'box-api'
 
 module Box
   module SimpleAuth
-    def box_login
+    def box_login(session)
       # make a new Account object using the API key
       account = Box::Account.new(settings.box_api_key)
 
@@ -33,14 +33,7 @@ module Box
       account
     end
 
-    def require_box_login
-      # login or redirect to the auth url
-      box_login do |auth_url|
-        redirect auth_url
-      end
-    end
-
-    def box_logout
+    def box_logout(session)
       session.delete(:box_token)
       session.delete(:box_ticket)
     end

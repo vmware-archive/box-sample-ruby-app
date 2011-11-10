@@ -19,21 +19,18 @@
 
 <div id="container">
   <header class="box_blue_bg">
+    <h3 id="logout">
+      <a href="/logout">Logout</a>
+    </h3>
+
     <h2 class="inline">
-      <%= @account.login %>
+      <%= account.login %>
     </h2>
 
     <h5 class="inline">
-      Space avaliable: <span class="lgrey"><%= @account.space_amount.to_i / 1048576 %> MB</span>
+      Space used: <span class="lgrey"><%= account.space_used.to_i / 104857 %> MB</span>
     </h5>
 
-    <h5 class="inline">
-      Space used: <span class="lgrey"><%= @account.space_used.to_i / 104857 %> MB</span>
-    </h5>
-
-    <h3 id="logout" class="inline">
-      <a href="/logout">Logout</a>
-    </h3>
   </header>
 
   <div id="content">
