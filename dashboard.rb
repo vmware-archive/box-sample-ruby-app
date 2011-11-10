@@ -28,11 +28,11 @@ class BoxDashboard < Sinatra::Base
     redirect "/"
   end
 
-  get "/navigate/:id" do |folder_id|
+  get "/items/:id" do |folder_id|
     @account = require_box_login
     folder = @account.folder(folder_id)
 
-    partial :item_column, :root => folder
+    partial :items, :root => folder
   end
 
   get "/preview/:id" do |file_id|

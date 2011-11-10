@@ -1,24 +1,41 @@
-.item_column {
+table.pane {
+  margin: 0 12px;
+}
+
+td.pane {
   vertical-align: top;
 }
 
-.item {
-  padding: 2px 6px;
+ul.item {
+  list-style: none;
+  padding: 0 12px;
+}
+
+li.item {
+  border-bottom: 1px solid #EEE;
+  padding: 4px 6px;
   width: 200px;
 }
 
-.item:hover {
-  background: #EEE;
+li.item:last-child {
+  border-bottom: 0;
+}
+
+li.item:hover {
+  background: #EFF5F9;
   cursor: pointer;
 }
 
-.item .media {
-  display: inline-block;
+li.item .media {
   padding: 0 6px 0 0;
 }
 
-.item .data {
-  display: inline;
+.pair {
+  vertical-align: middle;
+}
+
+.pair td {
+  padding: 0 6px;
 }
 
 .spinny {

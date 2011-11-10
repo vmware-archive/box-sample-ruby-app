@@ -1,6 +1,6 @@
 function add_next_column(column, data, speed) {
   speed = speed || 'fast';
-  data = "<td class=\"item_column\">" + data + "</td>";
+  data = "<td class=\"pane\">" + data + "</td>";
 
   return $(data).hide().insertAfter(column).show(speed);
 }
@@ -14,15 +14,15 @@ function remove_next_columns(column, speed) {
 }
 
 $(document).ready(function() {
-  $('.item').live('click', function() {
+  $('li.item').live('click', function() {
     var id = $(this).data('id');
     var type = $(this).data('type');
-    var column = $(this).parents('.item_column')
+    var column = $(this).parents('td');
 
     remove_next_columns(column);
     spinny = add_next_column(column, "<div class=\"spinny\"></div>");
 
-    var action = (type == 'folder') ? 'navigate' : 'preview';
+    var action = (type == 'folder') ? 'items' : 'preview';
 
     $.get(action + '/' + id, function(data) {
       spinny.remove();

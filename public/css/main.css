@@ -8,7 +8,7 @@ footer {
   border-top: 1px solid #DDD;
   bottom: 0;
   padding: 6px 12px;
-  position: absolute;
+  position: fixed;
   width: 100%;
 }
 
@@ -19,6 +19,10 @@ footer {
 #logout a {
   color: #FFF;
   text-decoration: none;
+}
+
+#fakefooter {
+  height: 32px;
 }
 
 
