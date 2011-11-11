@@ -65,7 +65,19 @@ get "/file/:file_id" do |file_id|
   partial :file, :file => file
 end
 
+get "/file/add/:parent_id" do |parent_id|
+  partial :add_file, :parent_id => parent_id
+end
+
 post "/file/add/:parent_id" do |parent_id|
   account = require_box_login
   parent = account.folder(parent_id)
+
+  tmpfile = params[:file][:tempfile]
+  name = params[:file][:filename]
+
+  file = parent.upload(tmpfile)
+  file.rename(name)
+
+  redirect "/"
 end

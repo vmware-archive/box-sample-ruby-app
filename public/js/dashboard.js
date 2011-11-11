@@ -15,8 +15,10 @@ $(document).ready(function() {
       add_next_column(column, data);
     });
   });
+});
 
-  $('.add_folder').live('click', function() {
+$(document).ready(function() {
+  $('.add_folder.button').live('click', function() {
     var id = $(this).closest('ul.item-box').data('id');
     var column = $(this).closest('td');
 
@@ -27,18 +29,33 @@ $(document).ready(function() {
     });
   });
 
-  $('.add_file').live('click', function() {
+  $('.add_file.button').live('click', function() {
+    var id = $(this).closest('ul.item-box').data('id');
+    var column = $(this).closest('td');
 
+    $.get("file/add/" + id, function(data) {
+      data = $("<li>" + data + "</li>");
+      data.insertBefore($('li.item', column).first());
+      data.hide().show('fast');
+    });
   });
 
-  $('.add_folder_form .submit').live('click', function() {
-    var form = $(this).closest('.add_folder_form');
-    var name = $('input', form).val();
-    var parent_id = form.data('parent');
+  $('form.add_folder').live('submit', function() {
+    var item = $(this).closest('li');
+    var name = $('input[name="name"]', this).val();
+    var parent_id = $(this).data('parent');
+
+    $(this).hide('fast');
 
     $.post("folder/add/" + parent_id, { name: name }, function(data) {
-      form.closest('li').html(data).addClass('item');
+      item.html(data).addClass('item').hide().show('fast');
     });
+
+    return false;
+  });
+
+  $('.submit').live('click', function() {
+    $(this).closest('form').submit();
   });
 });
 
@@ -54,5 +71,11 @@ function remove_next_columns(column, speed) {
 
   column.nextAll().hide(speed, function() {
     $(this).remove;
+  });
+}
+
+function submit_item(type, parent_id, data) {
+  $.post("folder/add/" + parent_id, data, function(data) {
+    form.closest('li').html(data).addClass('item');
   });
 }
