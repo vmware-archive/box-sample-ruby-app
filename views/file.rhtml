@@ -1,4 +1,20 @@
 <div class="item-box file">
-  <h2><%= file.name %></h2>
+  <h1>
+    <% if file.shared_name %>
+    <a href="http://www.box.net/shared/<%= file.shared_name %>"><%= file.name %></a>
+    <% else %>
+    <%= file.name %>
+    <% end %>
+  </h1>
+
+  <% if file.description %>
+  <h5><%= file.description %></h5>
+  <% end %>
+
+  <h5>Created at: <%= Time.at(file.created.to_i).ctime %></h5>
+  <h5>Updated at: <%= Time.at(file.updated.to_i).ctime %></h5>
+
+  <br />
+
   <%= file.embed_code(:width => 640, :height => 480) %>
 </div>

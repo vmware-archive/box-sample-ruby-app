@@ -12,6 +12,7 @@ $(document).ready(function() {
 
     $.get(type + '/' + id, function(data) {
       spinny.remove();
+      remove_next_columns(column);
       add_next_column(column, data);
     });
   });
@@ -46,12 +47,18 @@ $(document).ready(function() {
     var parent_id = $(this).data('parent');
 
     $(this).hide('fast');
+    $(this).after("<div class=\"spinny\"></div>");
 
     $.post("folder/add/" + parent_id, { name: name }, function(data) {
       item.html(data).addClass('item').hide().show('fast');
     });
 
     return false;
+  });
+
+  $('form.add_file').live('submit', function() {
+    $(this).hide('fast');
+    $(this).after("<div class=\"spinny\"></div>");
   });
 
   $('.submit').live('click', function() {
@@ -71,11 +78,5 @@ function remove_next_columns(column, speed) {
 
   column.nextAll().hide(speed, function() {
     $(this).remove;
-  });
-}
-
-function submit_item(type, parent_id, data) {
-  $.post("folder/add/" + parent_id, data, function(data) {
-    form.closest('li').html(data).addClass('item');
   });
 }

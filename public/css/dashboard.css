@@ -30,6 +30,10 @@
   border-bottom: 0;
 }
 
+.item-box input {
+  width: 160px;
+}
+
 .item:hover {
   background: #EFF5F9;
   cursor: pointer;
