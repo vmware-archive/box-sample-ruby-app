@@ -1,20 +1,26 @@
+<%# Renders information about the given file %>
+
 <div class="item-box file">
+  <%# Print the name of the file, and link to it if shared %>
   <h1>
     <% if file.shared_name %>
-    <a href="http://www.box.net/shared/<%= file.shared_name %>"><%= file.name %></a>
+      <a href="http://www.box.net/shared/<%= file.shared_name %>"><%= file.name %></a>
     <% else %>
-    <%= file.name %>
+      <%= file.name %>
     <% end %>
   </h1>
 
+  <%# Print the file description if it has one %>
   <% if file.description %>
-  <h5><%= file.description %></h5>
+    <h5><%= file.description %></h5>
   <% end %>
 
+  <%# Print time created/updated info %>
   <h5>Created at: <%= Time.at(file.created.to_i).ctime %></h5>
   <h5>Updated at: <%= Time.at(file.updated.to_i).ctime %></h5>
 
   <br />
 
+  <%# Show a preview of the file using the embed widget %>
   <%= file.embed_code(:width => 640, :height => 480) %>
 </div>

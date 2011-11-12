@@ -1,3 +1,5 @@
+/* Main layout */
+
 body {
   background: #EFF5F9;
 }
@@ -15,24 +17,21 @@ header h4, header h5, header h6 {
   padding: 0 4px;
 }
 
-#logout a {
+header #logout a {
   color: #FFF;
   text-decoration: none;
 }
 
-#logout { float: right; }
+header #logout { float: right; }
 
 footer {
   background-color: #F2EFEF;
   border-top: 1px solid #DDD;
   bottom: 0;
+  margin-top: 32px;
   padding: 6px 12px;
   position: fixed;
   width: 100%;
-}
-
-#fakefooter {
-  height: 32px;
 }
 
 

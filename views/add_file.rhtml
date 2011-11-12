@@ -1,3 +1,6 @@
+<%# Creates the form for adding new files %>
+<%# This does not use AJAX like the rest of the sample app because of technical difficulties %>
+
 <form action="file/add/<%= parent_id %>" class="add_file" method="POST" enctype="multipart/form-data">
   <input type="file" name="file" style="margin-right: 6px" />
   <span class="submit button">&gt;</span>

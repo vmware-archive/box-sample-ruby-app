@@ -1,82 +1,104 @@
+/* Handles all of the javascript effects for the dashboard */
+
+/* Pane navigation actions */
 $(document).ready(function() {
-  $('li.item').live('click', function() {
+  // Adds a new pane right after the selected one.
+  function add_next_pane(pane, data) {
+    data = "<td class=\"pane\">" + data + "</td>";
+    $(data).hide().insertAfter(pane).show('fast');
+  }
+
+  // Hides and then removes any panes after the selected one.
+  function remove_next_panes(pane) {
+    pane.nextAll().hide('fast', function() { $(this).remove; });
+  }
+
+  // Handles click events on any clickable items.
+  $('.item.clickable').live('click', function() {
     var id = $(this).data('id');
     var type = $(this).data('type');
-    var column = $(this).closest('td');
+    var pane = $(this).closest('.pane');
 
-    $('li.item.selected', column).removeClass('selected');
+    // Replace any selected items in this pane with this item
+    $('.item.selected', pane).removeClass('selected');
     $(this).addClass('selected');
 
-    remove_next_columns(column);
-    spinny = add_next_column(column, "<div class=\"spinny\"></div>");
+    // Remove any existing panes to the right of this one
+    remove_next_panes(pane);
 
+    // Add a new pane for the loading spinny
+    add_next_pane(pane, "<div class=\"spinny\"></div>");
+
+    // Make an AJAX request for the data to insert in the new pane
     $.get(type + '/' + id, function(data) {
-      spinny.remove();
-      remove_next_columns(column);
-      add_next_column(column, data);
+      // Remove any new panes to the right, including the spinny
+      remove_next_panes(pane);
+
+      // Add a new pane with this data
+      add_next_pane(pane, data);
     });
   });
 });
 
+/* File/Folder creation logic */
 $(document).ready(function() {
+  // Inserts a new item before the first clickable item. (below buttons, above folders)
+  function add_new_item(item_box, data) {
+    data = "<li class=\"item\">" + data + "</li>";
+    data.insertBefore($('.item.clickable', item_box).first()).hide().show('fast');
+  }
+
+  // The button to add a new folder.
   $('.add_folder.button').live('click', function() {
-    var id = $(this).closest('ul.item-box').data('id');
-    var column = $(this).closest('td');
+    var item_box = $(this).closest('.item-box');
+    var parent_id = item_box.data('id');
 
-    $.get("folder/add/" + id, function(data) {
-      data = $("<li>" + data + "</li>");
-      data.insertBefore($('li.item', column).first());
-      data.hide().show('fast');
+    // Get and insert the form to add a new folder.
+    $.get("folder/add/" + parent_id, function(data) {
+      add_new_item(item_box, data);
     });
   });
 
+  // The button to add a new file.
   $('.add_file.button').live('click', function() {
-    var id = $(this).closest('ul.item-box').data('id');
-    var column = $(this).closest('td');
+    var item_box = $(this).closest('.item-box');
+    var parent_id = item_box.data('id');
 
-    $.get("file/add/" + id, function(data) {
-      data = $("<li>" + data + "</li>");
-      data.insertBefore($('li.item', column).first());
-      data.hide().show('fast');
+    // Get an insert the form to add a new file.
+    $.get("file/add/" + parent_id, function(data) {
+      add_new_item(item_box, data);
     });
   });
 
+  // Handles when the add folder form was submitted.
   $('form.add_folder').live('submit', function() {
-    var item = $(this).closest('li');
+    var item = $(this).closest('.item');
     var name = $('input[name="name"]', this).val();
-    var parent_id = $(this).data('parent');
+    var parent_id = $('input[name="parent"]', this).val();
 
-    $(this).hide('fast');
-    $(this).after("<div class=\"spinny\"></div>");
+    // Replaces the form with a spinny, so it can't be submitted twice.
+    $(this).hide().after("<div class=\"spinny\"></div>");
 
+    // Add the new folder and the returned information about it.
     $.post("folder/add/" + parent_id, { name: name }, function(data) {
-      item.html(data).addClass('item').hide().show('fast');
+      item.html(data).addClass('clickable').hide().show('fast');
     });
 
+    // Prevent the default form behavoir.
     return false;
   });
 
+  // Handles when the add file form was submitted.
   $('form.add_file').live('submit', function() {
-    $(this).hide('fast');
-    $(this).after("<div class=\"spinny\"></div>");
+    // Hide the form and show a spinny.
+    $(this).hide().after("<div class=\"spinny\"></div>");
+
+    // Note: Adding files does not use AJAX because of technical limitations.
+    // You can find many jQuery plugins to help you do this.
   });
 
+  // Make the button button actually act like a submit button.
   $('.submit').live('click', function() {
     $(this).closest('form').submit();
   });
 });
-
-function add_next_column(column, data, speed) {
-  speed = speed || 'fast';
-  data = "<td class=\"pane\">" + data + "</td>";
-
-  return $(data).hide().insertAfter(column).show(speed);
-}
-
-function remove_next_columns(column, speed) {
-  speed = speed || 'fast';
-
-  column.nextAll().hide(speed, function() {
-    $(this).remove;
-  });
-}

@@ -1,4 +1,7 @@
-<form class="add_folder" data-parent="<%= parent_id %>">
+<%# Creates the form for adding new folders %>
+
+<form class="add_folder">
+  <input type="hidden" name="parent" value="<%= parent_id %>" />
   <input type="text" name="name" />
   <span class="submit button">&gt;</span>
 </form>

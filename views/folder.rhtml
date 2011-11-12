@@ -1,13 +1,21 @@
+<%# Renders information about the given folder %>
+
 <ul class="item-box" data-id="<%= folder.id %>">
-  <li>
+  <%# Show an add folder button %>
+  <li class="item">
     <div class="add_folder button">Add Folder</div>
   </li>
-  <li>
+
+  <%# Show an add file button %>
+  <li class="item">
     <div class="add_file button">Add File</div>
   </li>
+
+  <%# Loop over every folder and file (in that order) %>
   <% (folder.folders + folder.files).each do |item| %>
-  <li class="item" data-id="<%= item.id %>" data-type="<%= item.type %>">
-    <%= partial(:item, :item => item) %>
-  </li>
+    <%# Render a cell for each item %>
+    <li class="item clickable" data-id="<%= item.id %>" data-type="<%= item.type %>">
+      <%= partial(:item, :item => item) %>
+    </li>
   <% end %>
 </ul>
