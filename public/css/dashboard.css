@@ -32,11 +32,6 @@
   border-bottom: 0;
 }
 
-
-.item-box .item input {
-  width: 160px;
-}
-
 .item-box .item.clickable:hover {
   background: #EFF5F9;
   cursor: pointer;

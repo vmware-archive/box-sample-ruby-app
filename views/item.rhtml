@@ -1,24 +1,26 @@
 <%# Renders a navigation cell for each item (can be file or folder) %>
 
-<%# We use a table to make everything line up nicely %>
-<table>
-  <tr>
-    <%# Show the icon for the file or folder %>
-    <td class="media">
-      <% if item.type == 'file' %>
-        <%# If a file, use the thumbnail url for the image %>
-        <% icon_url = item.thumbnail %>
-        <div class="thumb_small" style="background-image: url(<%= icon_url %>)"></div>
-      <% else %>
-        <%# If a folder, use the generic icon and overlay the file count %>
-        <div class="folder_icon overlay">
-          <span class="overlay_content"><%= item.file_count %></span>
-        </div>
-      <% end %>
-    </td>
-    <%# Show the data for the file or folder %>
-    <td class="data">
-      <%= item.name %>
-    </td>
-  </tr>
-</table>
+<li class="item clickable" data-id="<%= item.id %>" data-type="<%= item.type %>">
+  <%# We use a table to make everything line up nicely %>
+  <table>
+    <tr>
+      <%# Show the icon for the file or folder %>
+      <td class="media">
+        <% if item.type == 'file' %>
+          <%# If a file, use the thumbnail url for the image %>
+          <% icon_url = item.thumbnail %>
+          <div class="thumb_small" style="background-image: url(<%= icon_url %>)"></div>
+        <% else %>
+          <%# If a folder, use the generic icon and overlay the file count %>
+          <div class="folder_icon overlay">
+            <span class="overlay_content"><%= item.file_count %></span>
+          </div>
+        <% end %>
+      </td>
+      <%# Show the data for the file or folder %>
+      <td class="data">
+        <%= item.name %>
+      </td>
+    </tr>
+  </table>
+</li>

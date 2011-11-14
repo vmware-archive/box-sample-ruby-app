@@ -33,6 +33,10 @@
     <h5 class="inline">
       Space used: <span class="lgrey"><%= account.space_used.to_i / 104857 %> MB</span>
     </h5>
+
+    <h5 class="inline">
+      Space avaliable: <span class="lgrey"><%= account.space_amount.to_i / 104857 %> MB</span>
+    </h5>
   </header>
 
   <%# Renders the rest of the template here %>

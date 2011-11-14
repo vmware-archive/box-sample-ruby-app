@@ -42,10 +42,10 @@ $(document).ready(function() {
 
 /* File/Folder creation logic */
 $(document).ready(function() {
-  // Inserts a new item before the first clickable item. (below buttons, above folders)
+  // Inserts a new item in the third row. (below buttons, above folders)
   function add_new_item(item_box, data) {
-    data = "<li class=\"item\">" + data + "</li>";
-    data.insertBefore($('.item.clickable', item_box).first()).hide().show('fast');
+    last_button = $('.item:nth-child(2)', item_box);
+    $(data).insertAfter(last_button).hide().show('fast');
   }
 
   // The button to add a new folder.
@@ -81,11 +81,16 @@ $(document).ready(function() {
 
     // Add the new folder and the returned information about it.
     $.post("folder/add/" + parent_id, { name: name }, function(data) {
-      item.html(data).addClass('clickable').hide().show('fast');
+      item.replaceWith(data).hide().show('fast');
     });
 
     // Prevent the default form behavoir.
     return false;
+  });
+
+  // Submits the form once a file has been selected.
+  $('form.add_file :file').live('change', function() {
+    $(this).closest('form').submit();
   });
 
   // Handles when the add file form was submitted.

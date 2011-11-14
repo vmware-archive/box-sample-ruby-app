@@ -14,8 +14,6 @@
   <%# Loop over every folder and file (in that order) %>
   <% (folder.folders + folder.files).each do |item| %>
     <%# Render a cell for each item %>
-    <li class="item clickable" data-id="<%= item.id %>" data-type="<%= item.type %>">
-      <%= partial(:item, :item => item) %>
-    </li>
+    <%= partial(:item, :item => item) %>
   <% end %>
 </ul>
