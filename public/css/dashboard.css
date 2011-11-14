@@ -53,6 +53,10 @@
   background: transparent url(/img/arrow.png) no-repeat scroll 100% 50%;
 }
 
+.data {
+  padding-left: 6px;
+}
+
 .folder_icon {
   background: transparent url(/img/folder.png);
   height: 32px;
