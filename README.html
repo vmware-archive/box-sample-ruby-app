@@ -1,0 +1,37 @@
+<h1>Box Sample App</h1>
+
+<h2>Installation Guide</h2>
+
+<p>You need to register your Box application in order to get an API key. You can do that <a href="http://www.box.net/developers/services">here</a>.</p>
+
+<p>While you're on that page, set your application's redirect url. This is the url the user is sent to after registering. It should be the address of your website, like &quot;http://box-sample-app.herokuapp.com&quot;.</p>
+
+<h3>Running on Heroku</h3>
+
+<p>Follow the normal <a href="http://devcenter.heroku.com/articles/quickstart">Heroku setup procedure</a> to create your application. After pushing the code, all you need to do is run:</p>
+
+<pre><code>heroku config:add BOX_API_KEY=&lt;your api key&gt;
+</code></pre>
+
+<p>That's it! Try <code>heroku open</code> and play around with your new site. It'll first prompt you to authenticate on Box, but once you've done that, you can navigate normally.</p>
+
+<h3>Running locally</h3>
+
+<p>It's hard to test your code when you need to push it to Heroku each time. You can run the sample app easy, you just need a few things.</p>
+
+<p>First off, you need to have a copy of Ruby 1.9. Ruby 1.8 might work, but is losing support and is not what you will be running on Heroku.</p>
+
+<p>With Ruby installed, use Bundler to install all of the project dependencies.</p>
+
+<pre><code>gem install bundler
+cd &lt;project root&gt;
+bundle
+</code></pre>
+
+<p>Lastly, you need to launch the Sinatra server. Prefix the command with your Box api key.</p>
+
+<pre><code>cd &lt;project root&gt;
+BOX_API_KEY=&lt;your api key&gt; rackup
+</code></pre>
+
+<p>This will run the server on port 9292. Visit http://localhost:9292 to see your app in action.</p>
