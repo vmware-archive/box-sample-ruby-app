@@ -36,8 +36,7 @@ module Box
 
     # Removes session information so the account is forgotten.
 
-    # Note: This doesn't actually log the user out, and the auth_token is still valid.
-    #       Be sure to call 'account.logout' if you want proper logout behavior.
+    # Note: This doesn't actually log the user out, it just clears the session data.
     def box_logout(session)
       session.delete(:box_token)
       session.delete(:box_ticket)

@@ -1,5 +1,6 @@
-# This sample app uses the Sinatra and the Box-Api gems.
-# TODO: Link to each home page.
+# This sample app uses the Sinatra and Box-Api gems.
+# Sinatra: http://www.sinatrarb.com/
+# Box-Api: https://github.com/box/box-ruby-sdk
 
 require 'box-api'
 require 'sinatra'
@@ -8,7 +9,7 @@ require 'sinatra'
 require './lib/box_auth'
 
 # This is where we set the API key given by Box.
-# TODO: Link to website
+# Get a key here: https://www.box.net/developers/services
 set :box_api_key, ENV['BOX_API_KEY']
 
 # Sessions are used to keep track of user logins.
