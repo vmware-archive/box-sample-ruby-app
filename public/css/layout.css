@@ -2,6 +2,10 @@
 
 body {
   background: #EFF5F9;
+  background-image: url(/img/0000010234-BG_CF.png);
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  border-color: #0D5E94;
 }
 
 header {
@@ -43,6 +47,12 @@ h1, h2, h3, h4, h5, h6 { margin: 0 }
   display: inline-block;
   margin: 0;
 }
+
+.inline.right {
+    float: right;
+    margin-right: 20px;
+}
+
 
 .box_blue_bg {
   background-color: #267BB6;
