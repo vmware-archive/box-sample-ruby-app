@@ -12,7 +12,7 @@ While you're on that page, set your application's redirect url. This is the url 
 
 You can run the sample app easy, you just need a few things.
 
-First off, you need to have a copy of Ruby 1.9. Ruby 1.8 might work, but is losing support and is not what you will be running on Heroku.
+First off, you need to have a copy of Ruby 1.9. Ruby 1.8 might work, but is losing support and is not what you will be running on your cloud provider.
 
 With Ruby installed, use Bundler to install all of the project dependencies.
 
