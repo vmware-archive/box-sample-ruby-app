@@ -3,7 +3,8 @@
 <li class="item">
   <form class="add_folder">
     <input type="hidden" name="parent" value="<%= parent_id %>" />
-    <input type="text" name="name" style="width: 160px" />
+    <input type="text" name="name" placeholder="Enter folder name" class="folder_name" id="<%= parent_id %>_text"/>
     <span class="submit button">&gt;</span>
   </form>
 </li>
+

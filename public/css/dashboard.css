@@ -92,3 +92,11 @@
   width: 32px;
   height: 32px;
 }
+
+.folder_name {
+    width: 160px;
+}
+
+.file_box {
+    width: 100px;
+}

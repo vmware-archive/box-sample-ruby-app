@@ -68,12 +68,18 @@ end
 # Gets a folder by id and returns its details.
 get "/folder/:folder_id" do |folder_id|
   account = require_box_login        # make sure the user is authorized
-  folder = account.folder(folder_id) # get the folder by id
 
-  # Note: Getting a folder by ID is fastest, but it won't know about its parents.
-  # If you need this information, use 'account.root.find(:id => folder_id)' instead.
+  begin
+    folder = account.folder(folder_id) # get the folder by id
 
-  partial :folder, :folder => folder # render the information about this folder
+    # Note: Getting a folder by ID is fastest, but it won't know about its parents.
+    # If you need this information, use 'account.root.find(:id => folder_id)' instead.
+
+    partial :folder, :folder => folder # render the information about this folder
+  rescue Exception => ex
+    puts "Got an exception on the AJAX call to get a folder with folder_id = #{folder_id} due to #{ex.inspect}"
+    partial :error, :error => "Error getting the folder due to #{ex}"
+  end
 end
 
 # Displays the form for adding a new folder based on the parent_id.
@@ -84,23 +90,38 @@ end
 # Creates a new folder with the given information.
 post "/folder/add/:parent_id" do |parent_id|
   account = require_box_login        # make sure the user is authorized
-  parent = account.folder(parent_id) # get the parent folder by id
+  begin
+    parent = account.folder(parent_id) # get the parent folder by id
 
-  name = params[:name]         # get the desired folder name
-  folder = parent.create(name) # create a new folder with this name
+    name = params[:name]         # get the desired folder name
+    folder = parent.create(name) # create a new folder with this name
 
-  partial :item, :item => folder # render the information about this folder
+    partial :item, :item => folder # render the information about this folder
+  rescue Box::Api::InvalidName => ex
+    partial :error, :error => "Folder name '#{name}' is not valid"
+  rescue Box::Api::NameTaken => ex
+    partial :error, :error => "Folder name #{name} already exists"
+  rescue Exception => ex
+    puts "Got an exception on the AJAX call to create a folder with name = #{name} due to #{ex.inspect}"
+    partial :error, :error => "Error creating folder #{name} #{ex}"
+  end
 end
 
 # Gets a file by id and returns its details.
 get "/file/:file_id" do |file_id|
   account = require_box_login  # make sure the user is authorized
-  file = account.file(file_id) # get the file by id
 
-  # Note: Getting a file by ID is fastest, but it won't know about its parents.
-  # If you need this information, use 'account.root.find(:id => file_id)' instead.
+  begin
+    file = account.file(file_id) # get the file by id
 
-  partial :file, :file => file # render the information about this file
+    # Note: Getting a file by ID is fastest, but it won't know about its parents.
+    # If you need this information, use 'account.root.find(:id => file_id)' instead.
+
+    partial :file, :file => file # render the information about this file
+  rescue Exception => ex
+    puts "Got an exception on the AJAX call to preview a file with id= #{file_id} due to #{ex.inspect}"
+    partial :error, :error => "Error previewing your file due to #{ex}"
+  end
 end
 
 # Displays the form for adding a new file based on the parent_id.
