@@ -4,6 +4,7 @@
 
 require 'box-api'
 require 'sinatra'
+require 'rack-flash'
 
 # Helper class to make authorizing with Box easier.
 require './lib/box_auth'
@@ -14,6 +15,7 @@ set :box_api_key, ENV['BOX_API_KEY']
 
 # Sessions are used to keep track of user logins.
 enable :sessions
+use Rack::Flash
 
 # Helper methods are avaliable for access throughout the application.
 helpers do
@@ -46,7 +48,7 @@ helpers do
   end
 end
 
-# The root of your website. Accessible via http://<your-app>.herokuapp.com
+# The root of your website. Accessible via http://<your-app>.cloudfoundry.com
 get "/" do
   update_box_login            # updates login information if given
   account = require_box_login # make sure the user is authorized
@@ -109,13 +111,23 @@ end
 # Creates a new folder with the given information.
 post "/file/add/:parent_id" do |parent_id|
   account = require_box_login        # make sure the user is authorized
-  parent = account.folder(parent_id) # get the parent folder by id
 
   tmpfile = params[:file][:tempfile] # get the path of the file
   name = params[:file][:filename]    # get the name of the file
 
-  file = parent.upload(tmpfile) # upload the file by its path
-  file.rename(name)             # rename the file to match its desired name
-
+  begin
+    parent = account.folder(parent_id) # get the parent folder by id
+    file = parent.upload(tmpfile) # upload the file by its path
+    begin
+      file.rename(name)             # rename the file to match its desired name
+      flash[:notice] = "Added #{name}"
+    rescue Box::Api::NameTaken => ex
+      file.delete  #cleanup !
+      flash[:error] = "File with name #{name} already exists"
+    end
+  rescue Exception => ex
+    puts "Exception uploading file with name #{name} was #{ex.inspect}"
+    flash[:error] = "Could not upload file"
+  end
   redirect "/" # redirect to the home page
 end

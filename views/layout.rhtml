@@ -36,8 +36,16 @@
     </h5>
 
     <h5 class="inline">
-      Space avaliable: <span class="lgrey"><%= account.space_amount.to_i / 104857 %> MB</span>
+      Space available: <span class="lgrey"><%= account.space_amount.to_i / 104857 %> MB</span>
     </h5>
+
+    <% if flash[:error]%>
+        <h5 class="inline red">Error: <span class="lgrey"><%=flash[:error] %></span></h5>
+    <% end %>
+    <% if flash[:notice] %>
+        <h5 class="inline green">Success: <span class="lgrey"><%=flash[:notice] %></span></h5>
+    <% end %>
+
   </header>
 
   <%# Renders the rest of the template here %>

@@ -23,6 +23,7 @@ With Ruby installed, use Bundler to install all of the project dependencies.
 Lastly, you need to launch the Sinatra server. Prefix the command with your Box api key.
 
     cd <project root>
-    BOX_API_KEY=<your api key> rackup
+    export BOX_API_KEY=<your api key>
+    rackup
 
 This will run the server on port 9292. Visit http://localhost:9292 to see your app in action.
