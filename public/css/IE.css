@@ -1,7 +1,6 @@
 .add_folder, .add_file {
-    background-color: #000099
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#57abe8', endColorstr='#257dc2',GradientType=0 );
 }
-
 
 .button {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#57abe8', endColorstr='#257dc2',GradientType=0 ); /* IE6-9 */
@@ -13,4 +12,8 @@
 
 .box_blue_bg {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#267BB6', endColorstr='#338FCE',GradientType=0 ); /* IE6-9 */
+}
+
+header,nav,section,article,aside,footer,hgroup {
+    display: block;
 }

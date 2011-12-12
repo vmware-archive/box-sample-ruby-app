@@ -82,7 +82,11 @@ $(document).ready(function() {
     // Add the new folder and the returned information about it.
     $.post("folder/add/" + parent_id, { name: name }, function(data) {
       item.replaceWith(data).hide().show('fast');
-    });
+    }).error(function(e) {
+        var data = '<div class="item-box item_error"><h5>Error</h5></div>';
+        item.replaceWith(data).hide().show('fast');
+        $('.item_error').fadeOut(3000);
+        });
 
     // Prevent the default form behavoir.
     return false;
